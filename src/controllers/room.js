@@ -8,8 +8,7 @@ const Room = require("../models/room");
 
 module.exports = {
   list: async (req, res) => {
-    
-    const data = await res.getModelList(Room)
+    const data = await res.getModelList(Room);
 
     res.status(200).send({
       error: false,
@@ -22,7 +21,14 @@ module.exports = {
 
   create: async (req, res) => {
 
-    const data = await Room.create(req.body)
+    req.body.image = []
+    if(req.files) {
+      for (let file of req.files){
+        req.body.image.push(file.path)
+      }
+    }
+
+    const data = await Room.create(req.body);
 
     res.status(201).send({
       error: false,
@@ -31,7 +37,6 @@ module.exports = {
   },
 
   read: async (req, res) => {
-
     const data = await Room.findOne({ _id: req.params.id });
 
     res.status(200).send({
@@ -41,7 +46,6 @@ module.exports = {
   },
 
   update: async (req, res) => {
-
     const data = await Room.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
