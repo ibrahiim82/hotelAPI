@@ -22,6 +22,7 @@
       }
       */
 
+const nodemailer = require('nodemailer')
 
 module.exports = function (to,title,message ) {
     

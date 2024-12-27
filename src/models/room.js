@@ -10,26 +10,30 @@ const RoomSchema = new mongoose.Schema(
   {
     roomNumber: {
       type:Number,
-      required: true,
-      unique: true,
+      required:true,
+      unique:true
+      
     },
     image: {
-      type: []
+      type:Array,
+      default:[]      
     },
     bedType: {
-      type: Number,
-      required: true,
-      unique: true,
+      type:Number,
+      required:true,
+      unique:true
+      
     },
     price: {
-      type: Number,
-      required: true,
-      unique: true
+      type:Number,
+      required:true,
+      unique:true
     },
-    available: {
-      type: Boolean,
-      default: false,
-    },
+    available:{
+      type:Boolean,
+      default:false,
+
+    }
   },
   {
     collection: "rooms",
